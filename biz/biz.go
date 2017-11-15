@@ -3,21 +3,38 @@ package biz
 import (
 	"encoding/json"
 	"github.com/dbv/dspider/model"
-	"github.com/dbv/dspider/utils"
 	"github.com/dbv/dspider/utils/log"
+	"github.com/PuerkitoBio/goquery"
+	"fmt"
 	"strings"
+	"strconv"
 )
 
-var BizFuncMap map[string]interface{}  = nil
-
-func init() {
-	if BizFuncMap == nil {
-		//注册公共操作函数
-		BizFuncMap = make(map[string]interface{})
-		BizFuncMap["GetPageList"] = NewFuncGetPageList()
-		BizFuncMap["GetUserlist"] = new
-	}
-}
+var Grules string = `
+{
+  "root": {
+    "name": "CSDN_BLOG",
+    "sites": [
+      "http://m.blog.csdn.net/Column/Column?Channel=mobile&Type=New",
+      "http://m.blog.csdn.net/Column/Column?Channel=enterprise&Type=New",
+      "http://m.blog.csdn.net/Column/Column?Channel=cloud&Type=New",
+      "http://m.blog.csdn.net/Column/Column?Channel=www&Type=New",
+      "http://m.blog.csdn.net/Column/Column?Channel=system&Type=New",
+      "http://m.blog.csdn.net/Column/Column?Channel=database&Type=New",
+      "http://m.blog.csdn.net/Column/Column?Channel=web&Type=New",
+      "http://m.blog.csdn.net/Column/Column?Channel=code&Type=New",
+      "http://m.blog.csdn.net/Column/Column?Channel=software&Type=New",
+      "http://m.blog.csdn.net/Column/Column?Channel=other&Type=New"
+    ]
+  },
+  "step": {
+    "method": [
+      "GetPageList,1,1,pagelist",
+      "GetUserlist,1,1,userlist",
+      "GetRelation,1,1,relationlist"
+    ]
+  }
+}`
 
 type BizDspider struct {
 	BizRule model.Rule
@@ -31,23 +48,34 @@ func (this *BizDspider) LoadRules(rule string) error {
 	return json.Unmarshal([]byte(rule), &this.BizRule)
 }
 
-func (this *BizDspider) DoWork() error {
-	log.Info("start to scan:",this.BizRule.Root.Name)
-	//获取根目录网站代码
-	for index:=0; index<len(this.BizRule.Root.Sites); index++ {
-		b,e := utils.GetData(this.BizRule.Root.Sites[index])
-		if e!=nil {
-			log.Error("get url failed:",this.BizRule.Root.Sites[index])
-		}
-		go DoStep(b,this.BizRule)
+func (this *BizDspider) FuncGetPageList(url string) (int) {
+	//log.Debug("start to parse url:", url)
+	doc, err := goquery.NewDocument(url)
+	if err != nil {
+		log.Debug("初始化文档失败", err.Error())
 	}
-	return nil
+	pagestr := doc.Find(".page_nav span").Text()
+	if len(pagestr) < 4 {
+		return -1
+	}
+	//fmt.Println("pagestr:", pagestr)
+	nstart := strings.LastIndex(pagestr, "共")
+	nend := strings.LastIndex(pagestr, "页")
+	pagecount, err := strconv.Atoi(pagestr[nstart+3:nend])
+	if err!=nil {
+		return -1
+	}
+	//log.Debug("总共:",pagecount)
+	return pagecount
 }
 
-func DoStep(data []byte,rule model.Rule) error {
-	for index:=0; index<len(rule.Step.Method); index++ {
-		//解析step数据
-		pararms := strings.Split(rule.Step.Method[index],",")
+func (this *BizDspider) GetUserList(url string)() {
+	//存入数据库
+	doc, err := goquery.NewDocument(url)
+	if err != nil {
+		log.Debug("初始化文档失败", err.Error())
 	}
-	return nil
+	hrefs := doc.Find(".head_img a").Length()
+	fmt.Println("hrefs:",hrefs)
 }
+
