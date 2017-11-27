@@ -1,0 +1,16 @@
+2017-11-27 11:56:27[[34mDEBUG[0m][modinit.go:48]  currPath:D:\goproject\src\github.com\dbv\dspider configPath:D:\goproject\src\github.com\dbv\dspider/conf/set.ini
+2017-11-27 11:56:27[[34mDEBUG[0m][modinit.go:64]  配置加载成功:{dspider 0 wen:331234958@tcp(127.0.0.1:3306)/wen?charset=utf8 D:\goproject\src\github.com\dbv\dspider\log\ D:\goproject\src\github.com\dbv\dspider\files\ 0 47.93.195.146:6379}
+2017-11-27 11:59:00[[34mDEBUG[0m][modinit.go:48]  currPath:D:\goproject\src\github.com\dbv\dspider configPath:D:\goproject\src\github.com\dbv\dspider/conf/set.ini
+2017-11-27 11:59:00[[34mDEBUG[0m][modinit.go:64]  配置加载成功:{dspider 0 wen:331234958@tcp(127.0.0.1:3306)/wen?charset=utf8 D:\goproject\src\github.com\dbv\dspider\log\ D:\goproject\src\github.com\dbv\dspider\files\ 0 47.93.195.146:6379}
+2017-11-27 11:59:33[[34mDEBUG[0m][modinit.go:48]  currPath:D:\goproject\src\github.com\dbv\dspider configPath:D:\goproject\src\github.com\dbv\dspider/conf/set.ini
+2017-11-27 11:59:33[[34mDEBUG[0m][modinit.go:64]  配置加载成功:{dspider 0 wen:331234958@tcp(127.0.0.1:3306)/wen?charset=utf8 D:\goproject\src\github.com\dbv\dspider\log\ D:\goproject\src\github.com\dbv\dspider\files\ 0 47.93.195.146:6379}
+2017-11-27 13:48:38[[34mDEBUG[0m][modinit.go:48]  currPath:D:\goproject\src\github.com\dbv\dspider configPath:D:\goproject\src\github.com\dbv\dspider/conf/set.ini
+2017-11-27 13:48:38[[34mDEBUG[0m][modinit.go:64]  配置加载成功:{dspider 0 wen:331234958@tcp(127.0.0.1:3306)/wen?charset=utf8 D:\goproject\src\github.com\dbv\dspider\log\ D:\goproject\src\github.com\dbv\dspider\files\ 0 47.93.195.146:6379}
+2017-11-27 13:51:01[[34mDEBUG[0m][modinit.go:48]  currPath:D:\goproject\src\github.com\dbv\dspider configPath:D:\goproject\src\github.com\dbv\dspider/conf/set.ini
+2017-11-27 13:51:01[[34mDEBUG[0m][modinit.go:64]  配置加载成功:{dspider 0 wen:331234958@tcp(127.0.0.1:3306)/wen?charset=utf8 D:\goproject\src\github.com\dbv\dspider\log\ D:\goproject\src\github.com\dbv\dspider\files\ 0 47.93.195.146:6379}
+2017-11-27 13:52:12[[34mDEBUG[0m][modinit.go:48]  currPath:D:\goproject\src\github.com\dbv\dspider configPath:D:\goproject\src\github.com\dbv\dspider/conf/set.ini
+2017-11-27 13:52:12[[34mDEBUG[0m][modinit.go:64]  配置加载成功:{dspider 0 wen:331234958@tcp(127.0.0.1:3306)/wen?charset=utf8 D:\goproject\src\github.com\dbv\dspider\log\ D:\goproject\src\github.com\dbv\dspider\files\ 0 47.93.195.146:6379}
+2017-11-27 13:55:32[[34mDEBUG[0m][modinit.go:48]  currPath:D:\goproject\src\github.com\dbv\dspider configPath:D:\goproject\src\github.com\dbv\dspider/conf/set.ini
+2017-11-27 13:55:32[[34mDEBUG[0m][modinit.go:64]  配置加载成功:{dspider 0 wen:331234958@tcp(127.0.0.1:3306)/wen?charset=utf8 D:\goproject\src\github.com\dbv\dspider\log\ D:\goproject\src\github.com\dbv\dspider\files\ 0 47.93.195.146:6379}
+2017-11-27 14:02:53[[34mDEBUG[0m][modinit.go:48]  currPath:D:\goproject\src\github.com\dbv\dspider configPath:D:\goproject\src\github.com\dbv\dspider/conf/set.ini
+2017-11-27 14:02:53[[34mDEBUG[0m][modinit.go:64]  配置加载成功:{dspider 0 wen:331234958@tcp(127.0.0.1:3306)/wen?charset=utf8 D:\goproject\src\github.com\dbv\dspider\log\ D:\goproject\src\github.com\dbv\dspider\files\ 0 47.93.195.146:6379}

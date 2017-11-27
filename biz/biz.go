@@ -5,9 +5,10 @@ import (
 	"github.com/dbv/dspider/model"
 	"github.com/dbv/dspider/utils/log"
 	"github.com/PuerkitoBio/goquery"
-	"fmt"
 	"strings"
 	"strconv"
+	"github.com/dbv/dspider/modinit"
+	"time"
 )
 
 var Grules string = `
@@ -62,20 +63,25 @@ func (this *BizDspider) FuncGetPageList(url string) (int) {
 	nstart := strings.LastIndex(pagestr, "共")
 	nend := strings.LastIndex(pagestr, "页")
 	pagecount, err := strconv.Atoi(pagestr[nstart+3:nend])
-	if err!=nil {
+	if err != nil {
 		return -1
 	}
 	//log.Debug("总共:",pagecount)
 	return pagecount
 }
 
-func (this *BizDspider) GetUserList(url string)() {
+func (this *BizDspider) GetUserList(url string) () {
 	//存入数据库
 	doc, err := goquery.NewDocument(url)
 	if err != nil {
 		log.Debug("初始化文档失败", err.Error())
 	}
-	hrefs := doc.Find(".head_img a").Length()
-	fmt.Println("hrefs:",hrefs)
-}
+	doc.Find(".colu_b").Each(func(i int, content *goquery.Selection) {
+		username := content.Find(".my_name").Text()
+		log.Debug("username:", username)
+		modinit.RedisInstance.Set(username, time.Now().Format(time.RFC3339Nano), 0)
 
+	})
+	log.Debug("遍历结束")
+	//fmt.Println("hrefs:",hrefs)
+}
